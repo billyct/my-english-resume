@@ -1,0 +1,4 @@
+.skill {
+  /* see https://stackoverflow.com/a/2392373 */
+  -webkit-print-color-adjust:exact;
+}
