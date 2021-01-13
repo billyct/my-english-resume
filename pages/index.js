@@ -1,65 +1,72 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+
+import Title from '../components/Title'
+import Section from '../components/Section'
+import Tag from '../components/Tag'
+import WorkExperience from '../components/WorkExperience'
+import Education from '../components/Education'
+import me from '../me'
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <main className='w-4/5 mx-auto py-8 antialiased font-sans'>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Yi Lu's Resume</title>
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <Section>
+        <h1 className='text-2xl font-bold'>{me.name}</h1>
+      </Section>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+      <Section>
+        <div className='text-sm italic leading-relaxed'>
+          <p>{me.jobTitle} | {me.address}</p>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+          <p>
+            <a href={`//${me.githubUrl}`} className='underline inline-block'>{me.githubUrl}</a>
+          </p>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+          <p>
+            <a href={`mailto:${me.email}`} className='underline inline-block'>{me.email}</a>
+          </p>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+          <p>
+            <a href={`tel:${me.phone}`} className='underline inline-block'>{me.phone}</a>
+          </p>
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
         </div>
-      </main>
+      </Section>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+      <Section>
+        <p>
+          {me.introduce}
+        </p>
+      </Section>
+
+      <Section>
+        <Title>Skills</Title>
+        <div>
+          {me.skills.map((skill, idx) => (
+            <Tag key={`skills_${idx}`} backgroundColor='red'>{skill}</Tag>
+          ))}
+        </div>
+      </Section>
+
+      <Section>
+        <Title>WORK EXPERIENCE</Title>
+
+        {me.companies.map((company, idx) => (
+          <WorkExperience key={`companies_${idx}`} company={company}/>
+        ))}
+      </Section>
+
+      <Section>
+        <Title>Education</Title>
+
+        {me.educations.map((education, idx) => (
+          <Education key={`educations_${idx}`} education={education}/>
+        ))}
+      </Section>
+    </main>
   )
 }

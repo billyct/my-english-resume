@@ -1,0 +1,12 @@
+.markdown {
+
+}
+
+.markdown ul {
+  list-style: circle;
+  padding-left: 20px;
+  margin-bottom: .5rem;
+}
+.markdown a {
+  color: dodgerblue;
+}
