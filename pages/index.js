@@ -2,7 +2,7 @@ import Head from 'next/head'
 
 import Title from '../components/Title'
 import Section from '../components/Section'
-import Tag from '../components/Tag'
+import Skill from '../components/Skill'
 import WorkExperience from '../components/WorkExperience'
 import Education from '../components/Education'
 import me from '../me'
@@ -47,7 +47,7 @@ export default function Home() {
         <Title>Skills</Title>
         <div>
           {me.skills.map((skill, idx) => (
-            <Tag key={`skills_${idx}`} backgroundColor='red'>{skill}</Tag>
+            <Skill key={`skills_${idx}`}>{skill}</Skill>
           ))}
         </div>
       </Section>
